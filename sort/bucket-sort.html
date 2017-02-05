@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BucketSort</title>
+    <script>
+        let arr = [2, 5, 3, 8, 5];//需要排序的数
+        let range = 10;//需排序的数的跨度
+        let book = [];//每个数出现的次数 
+
+        let result1 = [];//排序后的数组 -- 由小到大排
+        let result2 = [];//排序后的数组 -- 由大到小排
+        let result3 = [];//排序后的数组 -- 去重由小到大排
+
+        for (var i = 0; i <= range; i++) {
+            book[i] = 0;
+        }
+        for (var i = 0; i < arr.length; i++) {
+            if (book[arr[i]]) {
+                book[arr[i]]++;
+            } else {
+                book[arr[i]] = 1;
+            }
+        }
+        console.log("桶内情况(每个数出现的次数)：", book);
+
+        for (var i = 0; i < book.length; i++) {
+            if (book[i]) {
+                for (var j = 0; j < book[i]; j++) {
+                    result1.push(i);
+                }
+            }
+        }
+        console.log("由小到大排序结果：", result1)
+
+        for (var i = book.length; i >= 0; i--) {
+            if (book[i]) {
+                for (var j = 0; j < book[i]; j++) {
+                    result2.push(i);
+                }
+            }
+        }
+        console.log("由大到小排序结果：", result2)
+
+        for (var i = 0; i < book.length; i++) {
+            if (book[i]) {
+                result3.push(i);
+            }
+        }
+        console.log("去重由小到大排序结果：", result3)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
