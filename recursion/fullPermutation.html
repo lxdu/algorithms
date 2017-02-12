@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Full Permutation</title>
+    <script>
+        //递归实现全排列，即123的全排列为：123，132，213，231，312，321（共6种）
+        var arr = [1, 2, 3]; //需全排列的数组
+        var n = arr.length;
+        var a = [];//盒子数组
+        var book = [];//标记手中牌是否存在的数组
+        for (var i = 1; i <= n; i++) {
+            book[i] = 0;
+        }
+        function dfs(step) {
+            if (step == n + 1) {
+                console.log(a.join(""));
+                return
+            }
+            for (var i = 1; i <= n; i++) {
+                if (book[i] == 0) {
+                    a[step] = i;
+                    book[i] = 1;
+                    dfs(step + 1);
+                    book[i] = 0;
+                }
+            }
+            return
+        }
+        dfs(1)
+
+
+        //也是一个深度优先搜索的好例子，深度优先搜索的模型
+        // var dfs = function (step) {
+        //     //判断边界
+        //     for (i = 1; i < n; i++) {  //尝试每一种可能
+        //         dfs(step + 1)  //继续下一步
+        //     }
+        //     //返回
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
